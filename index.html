@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SRS Electrical Testing</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #222;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .orange-border {
+      border: 2.5px solid orange;
+      border-radius: 18px;
+      background: #232323;
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(255,140,0,0.07);
+      transition: box-shadow 0.3s, transform 0.3s, background 0.2s, color 0.2s;
+    }
+    .orange-border:hover, .red-border:hover {
+      box-shadow: 0 6px 24px rgba(255,140,0,0.18), 0 1.5px 6px rgba(0,0,0,0.07);
+      transform: translateY(-4px) scale(1.03);
+      background: #181818;
+      color: orange;
+    }
+    .heading-text {
+      color: orange;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      font-size: 2.2rem;
+      text-shadow: 0 2px 12px rgba(255,140,0,0.08);
+    }
+    .gray-text {
+      color: #b0b0b0;
+    }
+    /* Make paragraphs look fuller */
+    p, .gray-text {
+      font-size: 1.18rem;
+      line-height: 1.9;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+    }
+    .section-padding {
+      padding: 60px 0;
+    }
+    .btn-orange {
+      background: linear-gradient(90deg, #232323 60%, #181818 100%);
+      color: orange;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 38px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 12px rgba(255,140,0,0.13);
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s, color 0.2s;
+    }
+    .btn-orange:hover {
+      background: linear-gradient(90deg, #181818 60%, #232323 100%);
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(255,140,0,0.18);
+      transform: translateY(-2px) scale(1.06);
+    }
+    footer {
+      background: linear-gradient(90deg, #181818 80%, #ff9800 120%);
+      color: white;
+      padding: 24px 0;
+      letter-spacing: 0.7px;
+      font-size: 1.08rem;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      box-shadow: 0 -2px 12px rgba(255,140,0,0.07);
+    }
+    nav {
+      background: linear-gradient(90deg, #181818 80%, #ff9800 120%);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    nav a, .navbar-brand {
+      color: white !important;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .logo-img {
+      height: 56px;
+      width: 56px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      margin-right: 12px;
+      padding: 4px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .red-border {
+      border: 3px solid red !important;
+      border-radius: 18px;
+      background: #232323;
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(255,0,0,0.07);
+      transition: box-shadow 0.3s, transform 0.3s, background 0.2s, color 0.2s;
+    }
+    .red-border:hover {
+      background: #181818;
+      color: #e53935;
+    }
+    .overview-card-title, .orange-border, .red-border {
+      color: #fff;
+    }
+    .overview-card-title.red-text {
+      color: #e53935 !important;
+    }
+    .test-bar-bg {
+      background: linear-gradient(90deg, #232323 60%, #181818 100%);
+      border-radius: 8px;
+      height: 12px;
+      width: 80%;
+      margin: 14px auto 0 auto;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(255,0,0,0.07);
+    }
+    .test-bar-fill {
+      background: linear-gradient(90deg, #e53935 60%, #ff5252 100%);
+      height: 100%;
+      border-radius: 8px;
+      transition: width 0.5s;
+      box-shadow: 0 1px 4px rgba(255,0,0,0.12);
+    }
+    .overview-icon {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      transition: color 0.2s, transform 0.2s;
+      color: orange;
+    }
+    .orange-border .overview-icon {
+      color: orange;
+    }
+    .red-border .overview-icon {
+      color: #e53935;
+    }
+    /* Responsive tweaks */
+    @media (max-width: 767px) {
+      .section-padding {
+        padding: 32px 0;
+      }
+      .overview-icon {
+        font-size: 2rem;
+      }
+      .logo-img {
+        height: 44px;
+        width: 44px;
+        margin-right: 8px;
+      }
+      .navbar-brand span {
+        font-size: 1.1rem !important;
+      }
+    }
+    /* Make overview cards clickable */
+    .overview-card {
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .overview-card:active {
+      transform: scale(0.97);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+    }
+    .overview-card:hover {
+      background: linear-gradient(120deg, #fffbe6 0%, #fff 100%);
+      box-shadow: 0 8px 32px rgba(255,140,0,0.13), 0 2px 8px rgba(0,0,0,0.07);
+      transform: translateY(-6px) scale(1.04);
+    }
+    .overview-card::before {
+      content: "";
+      position: absolute;
+      left: -60%;
+      top: 0;
+      width: 120%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,200,100,0.08) 0%, rgba(255,255,255,0.0) 100%);
+      z-index: -1;
+      transition: opacity 0.3s;
+      opacity: 0;
+    }
+    .overview-card:hover::before {
+      opacity: 1;
+    }
+    /* Navbar brand text styling */
+    .navbar-brand span {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: orange !important;
+      text-shadow: 0 1px 8px rgba(255,140,0,0.08);
+      transition: color 0.2s;
+    }
+    .navbar-brand:hover span {
+      color: #ff9800 !important;
+    }
+    .collage-hero {
+      min-height: 200px;
+    }
+    .collage-img {
+      object-fit: cover;
+      width: 100%;
+      height: 140px;
+      border: 3px solid orange;
+      background: #232323;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .collage-img-1 {
+      height: 290px;
+      margin-bottom: 0;
+    }
+    .collage-img-2 {
+      height: 90px;
+    }
+    .collage-img-3 {
+      height: 90px;
+    }
+    .collage-img:hover {
+      transform: scale(1.04) rotate(-2deg);
+      box-shadow: 0 8px 32px rgba(255,140,0,0.18);
+      z-index: 2;
+    }
+    .collage-hero-custom {
+      min-height: 320px;
+      height: 320px;
+      position: relative;
+      width: 100%;
+      max-width: 370px;
+      margin: 0 auto;
+    }
+    .collage-img-wrap {
+      position: absolute;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(255,140,0,0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .collage-img-custom {
+      width: 140px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 3px solid orange;
+      background: #232323;
+      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+      filter: grayscale(10%) brightness(0.97) contrast(1.08);
+    }
+    .collage-img-custom:hover {
+      transform: scale(1.07) rotate(-2deg);
+      box-shadow: 0 12px 36px rgba(255,140,0,0.18);
+      filter: none;
+      z-index: 2;
+    }
+    .collage-img-wrap-1 {
+      left: 0;
+      top: 30px;
+      z-index: 2;
+      box-shadow: 0 8px 32px rgba(255,140,0,0.13);
+    }
+    .collage-img-wrap-2 {
+      left: 80px;
+      top: 0;
+      z-index: 3;
+      box-shadow: 0 12px 36px rgba(255,140,0,0.18);
+    }
+    .collage-img-wrap-3 {
+      left: 160px;
+      top: 60px;
+      z-index: 1;
+      box-shadow: 0 4px 24px rgba(255,140,0,0.10);
+    }
+    @media (max-width: 991px) {
+      .collage-hero-custom {
+        min-height: 200px;
+        height: 200px;
+        max-width: 240px;
+      }
+      .collage-img-custom {
+        width: 90px;
+        height: 110px;
+      }
+      .collage-img-wrap-1 { left: 0; top: 18px; }
+      .collage-img-wrap-2 { left: 50px; top: 0; }
+      .collage-img-wrap-3 { left: 100px; top: 36px; }
+    }
+    @media (max-width: 767px) {
+      .collage-hero-custom {
+        min-height: 110px;
+        height: 110px;
+        max-width: 120px;
+      }
+      .collage-img-custom {
+        width: 48px;
+        height: 60px;
+      }
+      .collage-img-wrap-1 { left: 0; top: 8px; }
+      .collage-img-wrap-2 { left: 28px; top: 0; }
+      .collage-img-wrap-3 { left: 56px; top: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg px-5">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="logo.jpg" alt="SRS Testing Logo" class="logo-img">
+      <span style="font-size:1.45rem; font-weight:700; letter-spacing:1px;">SRS Testing</span>
+    </a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#reason">Reason</a></li>
+        <li class="nav-item"><a class="nav-link" href="#product">Product</a></li>
+        <li class="nav-item"><a class="nav-link" href="#srs">SRS Testing</a></li>
+        <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="container section-padding">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h1 class="heading-text">Welcome to SRS Electrical Testing</h1>
+        <p>Reliable & Precise Electrical Testing Solutions</p>
+        <a href="#overview" class="btn btn-orange mt-3">Learn More</a>
+      </div>
+      <div class="col-lg-6">
+        <div class="collage-hero-custom d-flex flex-wrap justify-content-center align-items-center position-relative">
+          <div class="collage-img-wrap collage-img-wrap-1">
+            <img src="pic1.jpeg" alt="Test 1" class="collage-img-custom shadow">
+          </div>
+          <div class="collage-img-wrap collage-img-wrap-2">
+            <img src="pic2.jpg" alt="Test 2" class="collage-img-custom shadow">
+          </div>
+          <div class="collage-img-wrap collage-img-wrap-3">
+            <img src="pic3.jpg" alt="Test 3" class="collage-img-custom shadow">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reason Section -->
+  <div class="container section-padding" id="reason">
+    <h2 class="heading-text text-center">Why Choose Us</h2>
+    <div class="row text-center mt-4 g-4">
+      <div class="col-md-3 col-sm-6">
+        <div class="orange-border p-4 d-flex flex-column align-items-center">
+          <i class="bi bi-check2-circle" style="font-size:2rem; color:orange;"></i>
+          <span class="mt-2 fw-bold">Accurate Testing</span>
+          <span class="small mt-1">Precision in every measurement</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="orange-border p-4 d-flex flex-column align-items-center">
+          <i class="bi bi-award" style="font-size:2rem; color:orange;"></i>
+          <span class="mt-2 fw-bold">Certified Equipment</span>
+          <span class="small mt-1">Internationally approved tools</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="orange-border p-4 d-flex flex-column align-items-center">
+          <i class="bi bi-person-badge" style="font-size:2rem; color:orange;"></i>
+          <span class="mt-2 fw-bold">Expert Engineers</span>
+          <span class="small mt-1">Highly skilled professionals</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="orange-border p-4 d-flex flex-column align-items-center">
+          <i class="bi bi-lightning-charge" style="font-size:2rem; color:orange;"></i>
+          <span class="mt-2 fw-bold">Fast Turnaround</span>
+          <span class="small mt-1">Quick and reliable service</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="orange-border p-4 d-flex flex-column align-items-center">
+          <i class="bi bi-cash-coin" style="font-size:2rem; color:orange;"></i>
+          <span class="mt-2 fw-bold">Affordable Pricing</span>
+          <span class="small mt-1">Best value for your money</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="orange-border p-4 d-flex flex-column align-items-center">
+          <i class="bi bi-headset" style="font-size:2rem; color:orange;"></i>
+          <span class="mt-2 fw-bold">Customer Support</span>
+          <span class="small mt-1">24/7 assistance</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="orange-border p-4 d-flex flex-column align-items-center">
+          <i class="bi bi-people" style="font-size:2rem; color:orange;"></i>
+          <span class="mt-2 fw-bold">Trusted by Industry</span>
+          <span class="small mt-1">Preferred by top companies</span>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="orange-border p-4 d-flex flex-column align-items-center">
+          <i class="bi bi-cpu" style="font-size:2rem; color:orange;"></i>
+          <span class="mt-2 fw-bold">Latest Technology</span>
+          <span class="small mt-1">Cutting-edge solutions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Product Section -->
+  <div class="container section-padding" id="product">
+    <h2 class="heading-text text-center">Our Services</h2>
+    <div class="row text-center mt-4 g-4">
+      <div class="col-md-4 d-flex">
+        <div class="orange-border p-4 d-flex flex-column align-items-center w-100 h-100">
+          <i class="bi bi-lightning" style="font-size:2rem; color:orange;"></i>
+          <span class="fw-bold mt-2">Voltage Testing</span>
+          <span class="small mt-1">Comprehensive voltage analysis and safety checks.</span>
+        </div>
+      </div>
+      <div class="col-md-4 d-flex">
+        <div class="orange-border p-4 d-flex flex-column align-items-center w-100 h-100">
+          <i class="bi bi-clipboard2-check" style="font-size:2rem; color:orange;"></i>
+          <span class="fw-bold mt-2">Testing Kits</span>
+          <span class="small mt-1">All-in-one kits for field and lab testing.</span>
+        </div>
+      </div>
+      <div class="col-md-4 d-flex">
+        <div class="orange-border p-4 d-flex flex-column align-items-center w-100 h-100">
+          <i class="bi bi-sliders" style="font-size:2rem; color:orange;"></i>
+          <span class="fw-bold mt-2">Calibration Services</span>
+          <span class="small mt-1">Precision calibration for all instruments.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SRS Testing Section -->
+  <div class="container section-padding" id="srs">
+    <h2 class="heading-text text-center">SRS Testing</h2>
+    <p class="text-center mt-3">We ensure the highest standard of SRS electrical testing services. With state-of-the-art labs and expert technicians, we deliver precise and trustworthy results.</p>
+  </div>
+
+  <!-- Overview Section -->
+  <div class="container section-padding" id="overview">
+    <h2 class="heading-text text-center">Overview</h2>
+    <div class="row text-center mt-4">
+      <div class="col-md-4">
+        <div class="orange-border p-3 d-flex flex-column align-items-center overview-card" onclick="overviewCardClick('Tools')">
+          <i class="bi bi-tools overview-icon"></i>
+          <span class="overview-card-title">Tools</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div id="success-card" class="red-border p-3 d-flex flex-column align-items-center overview-card" onclick="overviewCardClick('Success')">
+          <i class="bi bi-patch-check-fill overview-icon"></i>
+          <span class="overview-card-title red-text">Success</span>
+          <div class="test-bar-bg">
+            <div id="test-bar-fill" class="test-bar-fill" style="width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="orange-border p-3 d-flex flex-column align-items-center overview-card" onclick="overviewCardClick('Growth')">
+          <i class="bi bi-graph-up-arrow overview-icon"></i>
+          <span class="overview-card-title">Growth</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Help Section -->
+  <div class="container section-padding text-center">
+    <h4 class="heading-text">Need Help?</h4>
+    <p class="gray-text">Contact us at support@srstesting.com or call +92-300-0000000</p>
+    <a href="#" class="btn btn-orange">Get Support</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p class="mb-0">&copy; 2025 SRS Electrical Testing. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Simulate test results: true = pass, false = fail
+    const testResults = [true, true, true]; // Change any to false to simulate a fail
+
+    function updateTestBar() {
+      const bar = document.getElementById('test-bar-fill');
+      if (testResults.every(Boolean)) {
+        bar.style.width = '100%';
+      } else {
+        bar.style.width = '40%';
+      }
+    }
+
+    // Overview card click handler
+    function overviewCardClick(card) {
+      if(card === 'Tools') {
+        alert('Tools: Explore our advanced testing tools!');
+      } else if(card === 'Success') {
+        alert('Success: All tests passed successfully!');
+      } else if(card === 'Growth') {
+        alert('Growth: See your progress and analytics!');
+      }
+    }
+
+    updateTestBar();
+  </script>
+</body>
+</html>
