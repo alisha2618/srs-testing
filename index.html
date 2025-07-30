@@ -12,10 +12,17 @@
       color: #222;
       font-family: 'Segoe UI', Arial, sans-serif;
     }
+    /* Charcoal Black Color */
+    :root {
+      --charcoal-black: #22272a;
+      --charcoal-black-dark: #181b1d;
+      --charcoal-black-light: #2d3236;
+      --orange: orange;
+    }
     .orange-border {
-      border: 2.5px solid orange;
+      border: 2.5px solid var(--orange);
       border-radius: 18px;
-      background: #232323;
+      background: var(--charcoal-black);
       color: #fff;
       box-shadow: 0 2px 12px rgba(255,140,0,0.07);
       transition: box-shadow 0.3s, transform 0.3s, background 0.2s, color 0.2s;
@@ -23,12 +30,12 @@
     .orange-border:hover, .red-border:hover {
       box-shadow: 0 6px 24px rgba(255,140,0,0.18), 0 1.5px 6px rgba(0,0,0,0.07);
       transform: translateY(-4px) scale(1.03);
-      background: #181818;
-      color: orange;
+      background: var(--charcoal-black-dark);
+      color: var(--orange);
     }
     .heading-text {
-      color: orange;
-      font-weight: 800;
+      color: var(--orange);
+      font-weight: 900;
       letter-spacing: 1.5px;
       font-size: 2.2rem;
       text-shadow: 0 2px 12px rgba(255,140,0,0.08);
@@ -48,8 +55,8 @@
       padding: 60px 0;
     }
     .btn-orange {
-      background: linear-gradient(90deg, #232323 60%, #181818 100%);
-      color: orange;
+      background: linear-gradient(90deg, var(--charcoal-black) 60%, var(--charcoal-black-dark) 100%);
+      color: var(--orange);
       border: none;
       border-radius: 25px;
       padding: 12px 38px;
@@ -60,14 +67,14 @@
       transition: background 0.2s, box-shadow 0.2s, transform 0.2s, color 0.2s;
     }
     .btn-orange:hover {
-      background: linear-gradient(90deg, #181818 60%, #232323 100%);
+      background: linear-gradient(90deg, var(--charcoal-black-dark) 60%, var(--charcoal-black) 100%);
       color: #fff;
       box-shadow: 0 6px 24px rgba(255,140,0,0.18);
       transform: translateY(-2px) scale(1.06);
     }
     footer {
-      background: linear-gradient(90deg, #181818 80%, #ff9800 120%);
-      color: white;
+      background: linear-gradient(90deg, var(--charcoal-black-dark) 80%, #ff9800 120%);
+      color: #fff;
       padding: 24px 0;
       letter-spacing: 0.7px;
       font-size: 1.08rem;
@@ -76,11 +83,11 @@
       box-shadow: 0 -2px 12px rgba(255,140,0,0.07);
     }
     nav {
-      background: linear-gradient(90deg, #181818 80%, #ff9800 120%);
+      background: linear-gradient(90deg, var(--charcoal-black-dark) 80%, #ff9800 120%);
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
     nav a, .navbar-brand {
-      color: white !important;
+      color: #fff !important;
       font-weight: 500;
       letter-spacing: 0.5px;
     }
@@ -99,13 +106,13 @@
     .red-border {
       border: 3px solid red !important;
       border-radius: 18px;
-      background: #232323;
+      background: var(--charcoal-black);
       color: #fff;
       box-shadow: 0 2px 12px rgba(255,0,0,0.07);
       transition: box-shadow 0.3s, transform 0.3s, background 0.2s, color 0.2s;
     }
     .red-border:hover {
-      background: #181818;
+      background: var(--charcoal-black-dark);
       color: #e53935;
     }
     .overview-card-title, .orange-border, .red-border {
@@ -115,7 +122,7 @@
       color: #e53935 !important;
     }
     .test-bar-bg {
-      background: linear-gradient(90deg, #232323 60%, #181818 100%);
+      background: linear-gradient(90deg, var(--charcoal-black) 60%, var(--charcoal-black-dark) 100%);
       border-radius: 8px;
       height: 12px;
       width: 80%;
@@ -131,13 +138,13 @@
       box-shadow: 0 1px 4px rgba(255,0,0,0.12);
     }
     .overview-icon {
-      font-size: 2.5rem;
-      margin-bottom: 8px;
+      font-size: 2.7rem;
+      margin-bottom: 12px;
+      color: var(--orange);
       transition: color 0.2s, transform 0.2s;
-      color: orange;
     }
     .orange-border .overview-icon {
-      color: orange;
+      color: var(--orange);
     }
     .red-border .overview-icon {
       color: #e53935;
@@ -158,6 +165,9 @@
       .navbar-brand span {
         font-size: 1.1rem !important;
       }
+      .heading-text {
+        font-size: 1.5rem;
+      }
     }
     /* Make overview cards clickable */
     .overview-card {
@@ -166,14 +176,18 @@
       position: relative;
       z-index: 1;
       overflow: hidden;
+      background: var(--charcoal-black-dark);
+      border: 2px solid var(--charcoal-black-light);
+      color: #fff;
     }
     .overview-card:active {
       transform: scale(0.97);
       box-shadow: 0 1px 4px rgba(0,0,0,0.10);
     }
     .overview-card:hover {
-      background: linear-gradient(120deg, #fffbe6 0%, #fff 100%);
-      box-shadow: 0 8px 32px rgba(255,140,0,0.13), 0 2px 8px rgba(0,0,0,0.07);
+      background: var(--charcoal-black-light);
+      color: var(--orange);
+      box-shadow: 0 8px 32px rgba(255,140,0,0.13);
       transform: translateY(-6px) scale(1.04);
     }
     .overview-card::before {
@@ -196,7 +210,7 @@
       font-size: 1.45rem;
       font-weight: 700;
       letter-spacing: 1px;
-      color: orange !important;
+      color: var(--orange) !important;
       text-shadow: 0 1px 8px rgba(255,140,0,0.08);
       transition: color 0.2s;
     }
@@ -210,8 +224,8 @@
       object-fit: cover;
       width: 100%;
       height: 140px;
-      border: 3px solid orange;
-      background: #232323;
+      border: 3px solid var(--orange);
+      background: var(--charcoal-black);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .collage-img-1 {
@@ -234,8 +248,11 @@
       height: 320px;
       position: relative;
       width: 100%;
-      max-width: 370px;
+      max-width: 320px;
       margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .collage-img-wrap {
       position: absolute;
@@ -245,12 +262,12 @@
       transition: box-shadow 0.2s, transform 0.2s;
     }
     .collage-img-custom {
-      width: 140px;
-      height: 180px;
+      width: 120px;
+      height: 170px;
       object-fit: cover;
       border-radius: 18px;
-      border: 3px solid orange;
-      background: #232323;
+      border: 3px solid var(--orange);
+      background: var(--charcoal-black);
       transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
       filter: grayscale(10%) brightness(0.97) contrast(1.08);
     }
@@ -262,49 +279,254 @@
     }
     .collage-img-wrap-1 {
       left: 0;
-      top: 30px;
+      top: 40px;
       z-index: 2;
       box-shadow: 0 8px 32px rgba(255,140,0,0.13);
+      position: absolute;
     }
     .collage-img-wrap-2 {
       left: 80px;
       top: 0;
       z-index: 3;
       box-shadow: 0 12px 36px rgba(255,140,0,0.18);
+      position: absolute;
     }
     .collage-img-wrap-3 {
       left: 160px;
-      top: 60px;
+      top: 80px;
       z-index: 1;
       box-shadow: 0 4px 24px rgba(255,140,0,0.10);
+      position: absolute;
     }
     @media (max-width: 991px) {
       .collage-hero-custom {
-        min-height: 200px;
-        height: 200px;
-        max-width: 240px;
+        min-height: 180px;
+        height: 180px;
+        max-width: 180px;
       }
       .collage-img-custom {
-        width: 90px;
-        height: 110px;
+        width: 60px;
+        height: 90px;
       }
       .collage-img-wrap-1 { left: 0; top: 18px; }
-      .collage-img-wrap-2 { left: 50px; top: 0; }
-      .collage-img-wrap-3 { left: 100px; top: 36px; }
+      .collage-img-wrap-2 { left: 40px; top: 0; }
+      .collage-img-wrap-3 { left: 80px; top: 36px; }
     }
     @media (max-width: 767px) {
       .collage-hero-custom {
-        min-height: 110px;
-        height: 110px;
-        max-width: 120px;
+        min-height: 80px;
+        height: 80px;
+        max-width: 80px;
       }
       .collage-img-custom {
-        width: 48px;
-        height: 60px;
+        width: 28px;
+        height: 40px;
       }
       .collage-img-wrap-1 { left: 0; top: 8px; }
-      .collage-img-wrap-2 { left: 28px; top: 0; }
-      .collage-img-wrap-3 { left: 56px; top: 18px; }
+      .collage-img-wrap-2 { left: 14px; top: 0; }
+      .collage-img-wrap-3 { left: 28px; top: 18px; }
+    }
+    /* Charcoal black background for hero */
+    .hero-bg-charcoal {
+      background: var(--charcoal-black-dark);
+      border-radius: 22px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+      padding: 48px 32px 48px 32px;
+      margin-bottom: 40px;
+    }
+    .hero-text-large {
+      font-size: 1.18rem;
+      color: #f8f9fa;
+      line-height: 2.1;
+      margin-bottom: 32px;
+      margin-top: 18px;
+      letter-spacing: 0.2px;
+      font-weight: 500;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .hero-add-btn {
+      margin-top: 28px;
+    }
+    @media (max-width: 991px) {
+      .hero-bg-charcoal {
+        padding: 28px 10px;
+      }
+      .hero-text-large {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+      }
+    }
+    @media (max-width: 767px) {
+      .hero-bg-charcoal {
+        padding: 14px 2px;
+      }
+      .hero-text-large {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+    }
+    .srs-section-custom {
+      min-height: 400px;
+      background: linear-gradient(90deg, var(--charcoal-black) 60%, var(--charcoal-black-dark) 100%);
+      border-radius: 22px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+      margin-bottom: 40px;
+      padding: 32px 0;
+      display: flex;
+      align-items: center;
+    }
+    .srs-img-wrap {
+      background: var(--charcoal-black-dark);
+      border-radius: 18px;
+      padding: 0;
+      box-shadow: 0 8px 32px rgba(255,140,0,0.10);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      margin: 0 auto;
+      min-height: unset;
+      height: 100%;
+    }
+    .srs-img-custom {
+      width: 100%;
+      max-width: 370px;
+      height: 270px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 3px solid var(--orange);
+      background: var(--charcoal-black);
+      box-shadow: 0 4px 24px rgba(255,140,0,0.10);
+      transition: box-shadow 0.2s;
+      display: block;
+      margin: 0 auto;
+    }
+    @media (max-width: 991px) {
+      .srs-img-custom {
+        max-width: 220px;
+        height: 120px;
+      }
+    }
+    @media (max-width: 767px) {
+      .srs-img-custom {
+        max-width: 100px;
+        height: 60px;
+      }
+    }
+    .srs-text-wrap {
+      background: var(--charcoal-black);
+      border-radius: 18px;
+      padding: 38px 32px 38px 32px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .srs-text-large {
+      font-size: 1.35rem;
+      color: #fff;
+      line-height: 2.1;
+      letter-spacing: 0.2px;
+      margin-bottom: 0;
+    }
+    @media (max-width: 991px) {
+      .srs-section-custom {
+        padding: 18px 0;
+      }
+      .srs-img-wrap {
+        max-width: 180px;
+        min-height: 120px;
+        padding: 8px;
+      }
+      .srs-img-custom {
+        max-height: 110px;
+        width: 90px;
+      }
+      .srs-text-wrap {
+        padding: 18px 10px;
+      }
+      .srs-text-large {
+        font-size: 1.08rem;
+      }
+    }
+    @media (max-width: 767px) {
+      .srs-section-custom {
+        flex-direction: column;
+        padding: 8px 0;
+      }
+      .srs-img-wrap {
+        max-width: 100%;
+        margin-bottom: 18px;
+        min-height: 60px;
+      }
+      .srs-img-custom {
+        max-height: 60px;
+        width: 48px;
+      }
+      .srs-text-wrap {
+        padding: 10px 4px;
+      }
+      .srs-text-large {
+        font-size: 1rem;
+      }
+    }
+    /* --- Overview Section Styling --- */
+    .overview-section-custom {
+      background: linear-gradient(90deg, var(--charcoal-black) 60%, var(--charcoal-black-dark) 100%);
+      border-radius: 22px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+      padding: 48px 24px 48px 24px;
+      margin-bottom: 40px;
+    }
+    .overview-card {
+      background: var(--charcoal-black-dark);
+      border-radius: 16px;
+      border: 2px solid var(--charcoal-black-light);
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(255,140,0,0.07);
+      padding: 32px 18px 28px 18px;
+      margin-bottom: 24px;
+      transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .overview-card:hover {
+      background: var(--charcoal-black-light);
+      color: var(--orange);
+      box-shadow: 0 8px 32px rgba(255,140,0,0.13);
+      transform: translateY(-6px) scale(1.04);
+    }
+    .overview-icon {
+      font-size: 2.7rem;
+      margin-bottom: 12px;
+      color: var(--orange);
+      transition: color 0.2s, transform 0.2s;
+    }
+    .overview-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+    .overview-card-desc {
+      font-size: 1.08rem;
+      color: #b0b0b0;
+      margin-top: 10px;
+      line-height: 1.7;
+    }
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, var(--charcoal-black-dark) 80%, #ff9800 120%);
+      color: white;
+      padding: 24px 0;
+      letter-spacing: 0.7px;
+      font-size: 1.08rem;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      box-shadow: 0 -2px 12px rgba(255,140,0,0.07);
     }
   </style>
 </head>
@@ -327,23 +549,27 @@
 
   <!-- Hero Section -->
   <div class="container section-padding">
-    <div class="row align-items-center">
-      <div class="col-lg-6 mb-4 mb-lg-0">
-        <h1 class="heading-text">Welcome to SRS Electrical Testing</h1>
-        <p>Reliable & Precise Electrical Testing Solutions</p>
-        <a href="#overview" class="btn btn-orange mt-3">Learn More</a>
-      </div>
-      <div class="col-lg-6">
-        <div class="collage-hero-custom d-flex flex-wrap justify-content-center align-items-center position-relative">
-          <div class="collage-img-wrap collage-img-wrap-1">
-            <img src="pic1.jpeg" alt="Test 1" class="collage-img-custom shadow">
+    <div class="hero-bg-charcoal">
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0 d-flex justify-content-center">
+          <div class="collage-hero-custom position-relative">
+            <div class="collage-img-wrap collage-img-wrap-1">
+              <img src="pic1.jpeg" alt="Test 1" class="collage-img-custom shadow">
+            </div>
+            <div class="collage-img-wrap collage-img-wrap-2">
+              <img src="pic2.jpg" alt="Test 2" class="collage-img-custom shadow">
+            </div>
+            <div class="collage-img-wrap collage-img-wrap-3">
+              <img src="pic3.jpg" alt="Test 3" class="collage-img-custom shadow">
+            </div>
           </div>
-          <div class="collage-img-wrap collage-img-wrap-2">
-            <img src="pic2.jpg" alt="Test 2" class="collage-img-custom shadow">
-          </div>
-          <div class="collage-img-wrap collage-img-wrap-3">
-            <img src="pic3.jpg" alt="Test 3" class="collage-img-custom shadow">
-          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1 d-flex flex-column justify-content-center">
+          <h1 class="heading-text" style="color:#fff; text-shadow:0 2px 12px rgba(0,0,0,0.18);">Welcome to SRS Electrical Testing</h1>
+          <p class="hero-text-large" style="color:#f8f9fa;">
+            Reliable & Precise Electrical Testing Solutions. We provide industry-leading services with advanced technology, certified equipment, and expert engineers. Your safety and satisfaction are our top priorities. Experience the difference with SRS Testing.
+          </p>
+          <a href="#product" class="btn btn-orange hero-add-btn">Add Product</a>
         </div>
       </div>
     </div>
@@ -441,33 +667,50 @@
 
   <!-- SRS Testing Section -->
   <div class="container section-padding" id="srs">
-    <h2 class="heading-text text-center">SRS Testing</h2>
-    <p class="text-center mt-3">We ensure the highest standard of SRS electrical testing services. With state-of-the-art labs and expert technicians, we deliver precise and trustworthy results.</p>
+    <div class="row align-items-center srs-section-custom">
+      <div class="col-lg-6 d-flex justify-content-center align-items-center srs-img-col">
+        <div class="srs-img-wrap">
+          <img src="srs testing.jpeg" alt="SRS Testing Lab" class="img-fluid srs-img-custom shadow">
+        </div>
+      </div>
+      <div class="col-lg-6 d-flex flex-column justify-content-center">
+        <div class="srs-text-wrap">
+          <h2 class="heading-text mb-3">SRS Testing</h2>
+          <p class="srs-text-large">
+            We ensure the highest standard of SRS electrical testing services.<br>
+            With state-of-the-art labs and expert technicians, we deliver precise and trustworthy results.<br>
+            Our commitment to quality and safety makes us the preferred choice for clients seeking reliable electrical testing solutions.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
-
   <!-- Overview Section -->
-  <div class="container section-padding" id="overview">
-    <h2 class="heading-text text-center">Overview</h2>
-    <div class="row text-center mt-4">
+  <div class="container section-padding overview-section-custom" id="overview">
+    <h2 class="heading-text text-center mb-5" style="color:#fff;">Overview</h2>
+    <div class="row text-center g-4">
       <div class="col-md-4">
-        <div class="orange-border p-3 d-flex flex-column align-items-center overview-card" onclick="overviewCardClick('Tools')">
+        <div class="overview-card">
           <i class="bi bi-tools overview-icon"></i>
           <span class="overview-card-title">Tools</span>
+          <span class="overview-card-desc">Advanced and reliable tools for all your electrical testing needs.</span>
         </div>
       </div>
       <div class="col-md-4">
-        <div id="success-card" class="red-border p-3 d-flex flex-column align-items-center overview-card" onclick="overviewCardClick('Success')">
-          <i class="bi bi-patch-check-fill overview-icon"></i>
-          <span class="overview-card-title red-text">Success</span>
-          <div class="test-bar-bg">
+        <div class="overview-card">
+          <i class="bi bi-patch-check-fill overview-icon" style="color:#e53935"></i>
+          <span class="overview-card-title" style="color:#e53935">Success</span>
+          <span class="overview-card-desc">Our proven track record ensures your projects succeed every time.</span>
+          <div class="test-bar-bg mt-3">
             <div id="test-bar-fill" class="test-bar-fill" style="width: 100%;"></div>
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="orange-border p-3 d-flex flex-column align-items-center overview-card" onclick="overviewCardClick('Growth')">
+        <div class="overview-card">
           <i class="bi bi-graph-up-arrow overview-icon"></i>
           <span class="overview-card-title">Growth</span>
+          <span class="overview-card-desc">Partner with us for continuous improvement and business growth.</span>
         </div>
       </div>
     </div>
